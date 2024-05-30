@@ -1,13 +1,5 @@
 name: "Code check"
 description: "Check code with pre-commit in case the tool has not been installed by the pusher."
 runs:
-  using: "bash"
-  shell: "bash"
-  args:
-    - |
-      if ! command -v pre-commit &> /dev/null
-      then
-          echo "pre-commit is not installed. Installing..."
-          pip install pre-commit
-      fi
-      pre-commit run --all-files
+  using: "docker"
+  image: "Dockerfile"
